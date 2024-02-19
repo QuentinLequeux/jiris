@@ -1,11 +1,22 @@
 <?php
-if (file_exists(__DIR__ . '/database/database.php')) {
-    require __DIR__ . '/database/database.php';
+
+use Core\Database;
+use Core\Exceptions\FileNotFoundException;
+
+const BASE_PATH = __DIR__ . '/..';
+require BASE_PATH . '/vendor/autoload.php';
+
+if (file_exists(__DIR__ . '/../core/Database.php')) {
+    require __DIR__ . '/../core/Database.php';
 } else {
     die('Problème général de l’application');
 }
 
-$db = getPDO();
+try {
+    $db = new Database(BASE_PATH . '/.env.local.ini');
+} catch (FileNotFoundException $e) {
+    die($e->getMessage());
+}
 $statement = $db->query('SELECT * FROM jiris WHERE starting_at < now() ORDER BY starting_at DESC');
 $passed_jiris = $statement->fetchAll();
 $statement = $db->query('SELECT * FROM jiris WHERE starting_at > now() ORDER BY starting_at DESC');

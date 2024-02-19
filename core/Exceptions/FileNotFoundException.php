@@ -1,11 +1,14 @@
 <?php
 
-namespace Core;
+namespace Core\Exceptions;
 
-class FileNotFoundException
+use Exception;
+
+class FileNotFoundException extends Exception
 {
 
-    public function __construct()
+    public function __construct(string $message = '')
     {
+        parent::__construct($message);
     }
 }
