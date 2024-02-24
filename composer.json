@@ -1,0 +1,17 @@
+{
+  "name": "quentin/jiri",
+  "authors": [
+    {
+      "name": "QuentinLequeux",
+      "email": "145542949+QuentinLequeux@users.noreply.github.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Core\\": "core"
+    }
+  },
+  "require": {
+    "php": "^8.3"
+  }
+}

@@ -1,6 +1,6 @@
 <?php
 
-echo 'seedinf jiris' . PHP_EOL;
+echo 'seeding jiris' . PHP_EOL;
 
 $jiris = [
     ['id' => 1, 'name' => 'Projets Web 2024', 'starting_at' => '2024-01-19 08:30:00'],
@@ -9,7 +9,7 @@ $jiris = [
     ['id' => 4, 'name' => 'Design Web 2023', 'starting_at' => '2023-06-19 08:30:00']];
 
 $insert_jiris_sql = <<<SQL
-INSERT INTO jiris(name, starting_at) values(:name, :starting_at);
+INSERT INTO jiris(name, starting_at) VALUES (:name, :starting_at);
 SQL;
 
 $insert_jiris_statement = $db->prepare($insert_jiris_sql);
@@ -19,5 +19,5 @@ foreach ($jiris as $jiri) {
     $insert_jiris_statement->bindValue(':starting_at', $jiri['starting_at']);
     $insert_jiris_statement->execute();
 }
-
-echo 'jiris seeded' . PHP_EOL;
+$count_jiris = count($jiris);
+echo "jiris seeded with {$count_jiris} jiris" . PHP_EOL;

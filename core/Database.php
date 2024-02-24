@@ -49,6 +49,16 @@ class Database
         }
     }
 
+    public function query(string $sql): PDOStatement|false
+    {
+        return $this->pdo->query($sql);
+    }
+
+    public function exec(string $sql_statement): int|false
+    {
+        return $this->pdo->exec($sql_statement);
+    }
+
     public function truncateTables(): void
     {
         $tables = $this->pdo->query('SHOW TABLES;')->fetchAll();
@@ -57,18 +67,8 @@ class Database
         }
     }
 
-    public function exec(string $sql_statement): int|false
-    {
-        return $this->pdo->exec($sql_statement);
-    }
-
     public function prepare(string $sql): PDOStatement|false
     {
         return $this->pdo->prepare($sql);
-    }
-
-    public function query(string $sql): PDOStatement|false
-    {
-        return $this->pdo->query($sql);
     }
 }
