@@ -2,7 +2,11 @@
 
 use Core\Database;
 
-$db = new Database('../.env.local.ini');
+try {
+    $db = new Core\Database(BASE_PATH . '/.env.local.ini');
+} catch (\Core\Exceptions\FileNotFoundException $e) {
+    die($e->getMessage());
+}
 
 // dropper les tables existantes
 
