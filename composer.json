@@ -1,0 +1,20 @@
+{
+  "name": "dominique/jiri",
+  "description": "An app to rule all the jiris",
+  "require": {
+    "php": "^8.2",
+    "ext-pdo": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Core\\": "core/",
+      "App\\Http\\Controllers\\": "app/http/controllers/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Dominique Vilain",
+      "email": "dominiquevilain@users.noreply.github.com"
+    }
+  ]
+}
